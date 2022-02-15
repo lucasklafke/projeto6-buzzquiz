@@ -21,16 +21,16 @@ h1{
     color: white;
 }
 section{
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 .without-quiz-created{
     position: relative;
     width: 340px;
     height: 181px;
-    top: 100px;
-    
     background: #FAFAFA;
     border: 1px dashed #D5D5D5;
     box-sizing: border-box;
@@ -39,11 +39,22 @@ section{
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    margin-bottom: 35px;
 }
-.without-quiz-created span{
+.without-quizz-message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 250px;
     height: 107px;
     top: 7;
+
+
+    font-size: 20px;
+    color: #B9B9B9;
+    font-weight: 400;
+    text-align: center;
 }
 .create-quizz{
     position: absolute;
@@ -57,21 +68,33 @@ section{
 }
 button span{
     color: red;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 21px;
+    line-height: 25px;
 }
 
 
 main{
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    display: block;
+}
+h2{
+    left: 0;
+    font-weight: 700;
+    font-size: 20px;
+
 }
 .quizz{
-    display: none;
     width: 340px;
     height: 181px;
     position: relative;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(image.png);
     border-radius: 5px;
+    margin-top: 14px;
 }
 
 h3{
