@@ -3,6 +3,7 @@ body{
     font-family: 'Roboto', sans-serif;
     background-color: #FAFAFA;
 }
+
 header{
     width: 100%;
     height: 69px;
@@ -19,14 +20,14 @@ h1{
     font-weight: 700;
     color: white;
 }
-section{
+.initial-layout{
     margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
-.without-quiz-created{
+.initial-layout .without-quiz-created{
     position: relative;
     width: 340px;
     height: 181px;
@@ -41,7 +42,7 @@ section{
 
     margin-bottom: 35px;
 }
-.without-quizz-message{
+.initial-layout .without-quizz-message{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,7 +56,7 @@ section{
     font-weight: 400;
     text-align: center;
 }
-.create-quizz{
+.initial-layout .create-quizz{
     position: absolute;
     color: white;
     width: 151px;
@@ -65,7 +66,7 @@ section{
     border-radius: 50px;
     bottom: 33px;
 }
-button span{
+.initial-layout button span{
     color: red;
     font-style: normal;
     font-weight: normal;
@@ -74,20 +75,20 @@ button span{
 }
 
 
-main{
+.initial-layout main{
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     display: block;
 }
-h2{
+.initial-layout h2{
     left: 0;
     font-weight: 700;
     font-size: 20px;
 
 }
-.quizz{
+.initial-layout .quizz{
     width: 340px;
     height: 181px;
     position: relative;
@@ -95,15 +96,15 @@ h2{
     border-radius: 5px;
     margin-top: 14px;
 }
-main img{
+.initial-layout main img{
     width: 340px;
     height: 181px;
 }
 
-h3{
+.initial-layout h3{
     font-size: 19px;
     color: white;
-
+    overflow: hidden;
 
     position: absolute;
     width: 301px;
@@ -111,3 +112,6 @@ h3{
     bottom: 7px;
     
 }
+/* ^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~ */ /* layout respondendo quizes */ /* ^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~ */
+
+/* ^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~ */ /* layout forms */ /* ^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~ */
