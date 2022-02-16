@@ -5,7 +5,7 @@ function getQuizzes(){
 
 function renderQuiz(response){
     const infos = response.data
-    const main = document.querySelector("main")
+    const main = document.querySelector(".quizz-container")
     for(i = 0; i < infos.length; i++){
         main.innerHTML += 
         `<div class="quizz">
