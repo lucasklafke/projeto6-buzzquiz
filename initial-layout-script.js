@@ -8,8 +8,8 @@ function renderQuiz(response){
     const main = document.querySelector(".quizz-container")
     for(i = 0; i < infos.length; i++){
         main.innerHTML += 
-        `<div class="quizz">
-            <img src='${infos[i].image}' alt="">
+        `<div class="quizz" onclick="enterQuizz">
+            <img src='${infos[i].image}' alt="" onclick="enterQuizz()">
             <h3>${infos[i].title}</h3>
         </div>
         `
