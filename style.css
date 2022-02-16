@@ -26,6 +26,7 @@ h1{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    display: none;
 }
 .initial-layout .without-quiz-created{
     position: relative;
@@ -115,3 +116,90 @@ h1{
 /* ^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~ */ /* layout respondendo quizes */ /* ^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~ */
 
 /* ^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~ */ /* layout forms */ /* ^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~ */
+
+/* Background that cotains the initial questions */
+
+.contains{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.form1-layout{
+    /* left: 38vw; */
+    /* display: flex;
+    justify-content:center;
+    align-self: center; */
+}
+.questions-box-initial {
+    width: 375px;
+    height: 256px;
+    top: 89px;
+    position: absolute;
+    z-index: 2;
+    padding: 22px 0;
+    box-sizing: border-box;
+
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.questions-field{
+    z-index: 1;
+    width: 341px;
+    height: 46px;
+    left: 16px;
+    top: 179px;
+
+    font-style: italic;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 22px;
+    color: #BABABA;
+
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    display: flex;
+    align-items:center;
+    text-align: center;
+}
+h2.form-initial-section{
+
+    /* position: absolute; */
+    /* top: 107px;
+    left: 30vw; */
+
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    Line height: 23.44px;
+
+    margin-top: 37px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.form-button1{
+    width: 324px;
+    height: 54px;
+    top: 374px;
+
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    color: #FFF5F4;
+
+    background: #EC362D;
+    border-radius: 15px;
+
+    position: absolute;
+}
