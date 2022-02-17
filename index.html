@@ -41,23 +41,93 @@
     <section class="quiz-layout">
     </section>
     <section class="form1-layout">
-        <div class="contains">
-            <h2 class="h2 form-initial-section" >Comece pelo começo</h2>
-            <div class="questions-box-initial">
-                <input class="questions-field" type="text" name="" value="Titulo do seu quizz">
-                <input class="questions-field" type="text" name="" value="Titulo do seu quizz">
-                <input class="questions-field" type="text" name="" value="Titulo do seu quizz">
-                <input class="questions-field" type="text" name="" value="Titulo do seu quizz">
+           <h2 class="form-sections" >Comece pelo começo</h2>
+          <div class="contains">
+           <div class="questions-box initial-box initial-section">
+                <input class="questions-field" type="text" name="" value=" Titulo do seu quizz">
+                <input class="questions-field" type="text" name="" value=" URL da imagem do seu quizz">
+                <input class="questions-field" type="text" name="" value=" Quantidade de perguntas do quizz">
+                <input class="questions-field" type="text" name="" value=" Quantidade de níveis do quizz">
             </div>
-            <button class="form-button1">Prosseguir pra criar perguntas</button>
+            <button class="form-button button-1">Prosseguir pra criar perguntas</button>
         </div>
     </section>
+
     <section class="form2-layout">
+        <h2 class="form-sections" >Crie suas perguntas</h2>
+        <div class="contains">
+            <div class="questions-box create-section">
+
+                <h2 class="create-quizz-sections">Pergunta 1</h2>
+                 <input class="questions-field" type="text" name="" value=" Texto da sua pergunta">
+                 <input class="questions-field" type="text" name="" value=" Cor de fundo da pergunta">
+
+                 <h2 class="create-quizz-sections">Resposta correta</h2>
+                 <input class="questions-field" type="text" name="" value=" Resposta correta">
+                 <input class="questions-field" type="text" name="" value=" URL da imagem">
+
+                 <h2 class="create-quizz-sections">Resposta incorretas</h2>
+                 <input class="questions-field" type="text" name="" value=" Resposta incorreta 1">
+                 <input class="questions-field" type="text" name="" value=" URL da imagem 1">
+                 <input class="questions-field" type="text" name="" value=" Resposta incorreta 2">
+                 <input class="questions-field" type="text" name="" value=" URL da imagem 2">
+                 <input class="questions-field" type="text" name="" value=" Resposta incorreta 3">
+                 <input class="questions-field" type="text" name="" value=" URL da imagem 3">
+             </div>
+             
+             <div class="write-question question-2">
+                <h2 class="create-quizz-sections">Pergunta 2</h2>
+                <ion-icon class="create-quizz-icons" name="create-outline"></ion-icon>
+             </div>
+             <div class="write-question question-3">
+                <h2 class="create-quizz-sections">Pergunta 3</h2>
+                <ion-icon class="create-quizz-icons" name="create-outline"></ion-icon>
+             </div>
+             <button class="form-button button-2">Prosseguir pra criar niveis</button>
+        </div>
     </section>
+
     <section class="form3-layout">
+        <h2 class="form-sections" >Agora, decida os níveis</h2>
+        <div class="contains">
+            <div class="questions-box levels-section">
+
+                <h2 class="create-quizz-sections">Nivel 1</h2>
+                 <input class="questions-field" type="text" name="" value=" Titulo do nível">
+                 <input class="questions-field" type="text" name="" value=" % de acerto mínimo">
+                 <input class="questions-field" type="text" name="" value=" URL da imagem do nível">
+                 <input class="questions-field description" type="text" name="" value=" Descrição do nível">
+            </div>
+
+            <div class="write-question nivel-2">
+                <h2 class="create-quizz-sections">Nivel 2</h2>
+                <ion-icon class="create-quizz-icons" name="create-outline"></ion-icon>
+             </div>
+             <div class="write-question nivel-3">
+                <h2 class="create-quizz-sections">Nivel 3</h2>
+                <ion-icon class="create-quizz-icons" name="create-outline"></ion-icon>
+             </div>
+             <button class="form-button button-3">Finalizar Quizz</button>
+        </div>
+
     </section>
     <section class="form4-layout">
+
+        <h2 class="form-sections" >Seu Quizz está pronto</h2>
+          <div class="contains">
+            <div class="final-section">
+                <div class="created-new-quizz">
+                    <img class="image-new-quizz" src="image.png" alt="quizz image">
+                    <p class="name-new-quizz"> Qual personegem dos Simpsons você é?</p>
+                </div>
+            </div>
+            <div class="final-options">
+                <button class="access-quizz-button">Acessar Quizz</button>
+                <p class="return-home">Voltar pra home</p>
+            </div>
+        </div>
     </section>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="initial-layout-script.js"></script>
     <script src="playQuizz.js"></script>
