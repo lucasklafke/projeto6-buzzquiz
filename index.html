@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <h1>BuzzQuizz</h1>
+        <h1 onclick="reloadPage()">BuzzQuizz</h1>
     </header>
     <section class="initial-layout">
         <div class="without-quiz-created">
@@ -52,8 +52,8 @@
             </div>
         </div>
         <div class="quiz-menu">
-            <button class="restart-quiz"><span>Reiniciar Quizz</span></button>
-            <button class="back-home"><span>Voltar pra home</span></button>
+            <button class="restart-quiz" onclick="restartQuiz()"><span>Reiniciar Quizz</span></button>
+            <button class="back-home" onclick="reloadPage()"><span>Voltar pra home</span></button>
         </div>
     </section>
     <section class="form1-layout">

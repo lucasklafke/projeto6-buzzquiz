@@ -1,16 +1,21 @@
 let questionList = []
 let counterQuestion = 0
 let counterQuestionAux = 1
+let idQuizSelecionado = 0
+let countCorrectAnswers = 0
 function enterQuizz(quizz){
     const initialLayout = document.querySelector(".initial-layout").style.display = "none"
     const quizLayout = document.querySelector(".quiz-layout").style.display = "block"
     getQuizz(quizz)
 }
 function getQuizz(quizz){
-    const id = quizz.id
-    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`)
+    typeof(quizz.id)
+    if(typeof(quizz.id) === 'string'){
+        idQuizSelecionado = quizz.id
+    }
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizSelecionado}`)
     promise.then(renderQuizzLayout)
-    promise.catch()
+    promise.catch("deuproblemao")
 }
 function renderQuizzLayout(response){
     console.log('deubom')
@@ -27,15 +32,13 @@ function renderQuizzLayout(response){
     
 }   
 function errorRenderQuizzLayout(response){
-    console.log(response.response)
+    console.log('deuruim')
 }
 function renderQuestions(questions){
     let questionsContainer = document.querySelector(".questions-container")
-    console.log(questions)
     for(i = 0; i <questions.length;i++){
         questionList.push(questions[i])
         const answers = questions[i].answers
-        console.log(answers[0])
         if(answers.length == 2){
             questionsContainer.innerHTML +=
             `
@@ -120,9 +123,21 @@ function selectOption(selected){
             let arrayOptions = document.querySelectorAll(`.question${counterQuestion} .option`)
             for(i = 0; i < answers.length;i++){
                 if(arrayOptions[i].classList.contains("selected")){
-                    console.log("tem selected")
                 }else{
+                    arrayOptions[i].classList.add("not-selected")
+                }
+
+
+                console.log(answers[i].isCorrectAnswer === true)
+                console.log(answers[i])
+                if(answers[i].isCorrectAnswer === false){
                     arrayOptions[i].classList.add("wrong-answer")
+                } else{
+                    arrayOptions[i].classList.add("correct-answer")
+                }
+                
+                if(arrayOptions[i].classList.contains("selected") && arrayOptions[i].classList.contains("correct-answer")){
+                    countCorrectAnswers++
                 }
             }
         }else{
@@ -130,14 +145,30 @@ function selectOption(selected){
         }
         counterQuestion++
         if(counterQuestion == questionList.length){
-            const resultContainer = document.querySelector(".result-container").style.display = "flex"
+            const resultContainer = document.querySelector(".result-container")
+            resultContainer.style.display = "flex"
             const finishMenu = document.querySelector(".quiz-menu").style.display = "flex"
+            resultContainer.scrollIntoView()
         } else{
             const question = document.querySelector(`.question${counterQuestionAux}`)
             question.style.display = "flex"
             question.scrollIntoView()
-            console.log(counterQuestionAux)
             counterQuestionAux +=1
         }
     }
+}
+function reloadPage(){
+    location.reload()
+}
+function restartQuiz(){
+    questionList = []
+    counterQuestion = 0
+    counterQuestionAux = 1
+    document.querySelector(".questions-container").innerHTML = ''
+    getQuizz(idQuizSelecionado)
+    const resultContainer = document.querySelector(".result-container")
+    resultContainer.style.display = "none"
+    const finishMenu = document.queryselector(".quiz-menu").style.display = "none"
+    const question = document.queryselector(".question0")
+    question.scrollIntoView()
 }
