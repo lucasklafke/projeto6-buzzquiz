@@ -324,6 +324,7 @@ main{
     display: flex;
     justify-content: center;
     align-items:center;
+    flex-direction: column;
 }
 
 .questions-box-initial {
@@ -335,18 +336,23 @@ main{
     padding: 22px 0;
 }
 .questions-box {
+    margin-top: 25px;
     padding: 27px 0px;
     box-sizing: border-box;
     
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     
-    position: absolute;
+    /* position: absolute; */
     top: 30px;
     z-index: 2;
 
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+}
+.questions{
+    display: flex;
     flex-direction: column;
 }
 .initial-box{
@@ -364,7 +370,6 @@ main{
     font-style: italic;
     font-weight: normal;
     font-size: 19px;
-    /* line-height: 22px; */
     color: #BABABA;
 
     background: #FFFFFF;
@@ -384,7 +389,6 @@ main{
     font-size: 20px;
     line-height: 23.44px;   
 
-    margin-top: 37px;
     justify-content: center;
     align-items: center;
 }
@@ -403,10 +407,12 @@ main{
     letter-spacing: 0em;
     color: #FFF5F4;
 
+    margin-top: 25px;
+
     background: #EC362D;
     border-radius: 15px;
 
-    position: absolute;
+    /* position: absolute; */
 }
 .form1-layout .button-1{
     width: 324px;
@@ -420,7 +426,7 @@ main{
     display: none;
 }
 .create-section{
-    position: relative;
+    /* position: relative; */
     width: 375px;
     height: 825px;
 }
@@ -428,12 +434,15 @@ main{
     margin-left: 16px;
 }
 .write-question{
-    display: flex;
-    align-items: center;
-
-    position: absolute;
     width: 375px;
     height: 74px;
+    margin-top: 20px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* position: absolute; */
 
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
@@ -447,8 +456,9 @@ main{
 .create-quizz-icons{
     width: 26px;
     height: 26px;
-    position: absolute;
-    right: 15px;
+    margin-right: 16px;
+    /* position: absolute;
+    right: 15px; */
     color: #000000;
 }
 .button-2{
@@ -456,13 +466,17 @@ main{
     height: 54px;
     top: 1090px;
 }
+.fake-footer{
+    height: 60px;
+
+}
 /* ---  Level's Section  --- */
 
 .form3-layout{
     display: none;
 }
 .levels-section{
-    position: relative;
+    /* position: relative; */
     height: 439px;
     width: 375px;
     border-radius: 0px;
@@ -473,7 +487,7 @@ main{
 }
 .nivel-2{
     /* position:relative; */
-    top: 500px;
+    margin-top: 25px;
 }
 .nivel-3{
     /* position: absolute; */
@@ -547,7 +561,7 @@ main{
 .return-home{
     position: absolute;
     top:50px;
-    left: 45px;
+    left: 0px;
 
     width: 219.64px;
     height: 44px;
@@ -559,7 +573,6 @@ main{
     line-height: 21px;
     display: flex;
     align-items: center;
-    text-align: center;
-
+    justify-content: center;
     color: #818181;
 }
