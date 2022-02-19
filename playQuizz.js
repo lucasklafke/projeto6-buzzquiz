@@ -38,6 +38,7 @@ function errorRenderQuizzLayout(response){
     console.log('deuruim')
 }
 function renderQuestions(questions){
+    console.log(questions)
     let questionsContainer = document.querySelector(".questions-container")
     for(i = 0; i <questions.length;i++){
         questionList.push(questions[i])
@@ -46,7 +47,7 @@ function renderQuestions(questions){
             questionsContainer.innerHTML +=
             `
                 <div class="question${i}">
-                    <div class="question-text">
+                    <div class="question-text" style="background-color:${questions[i].color};">
                         <span>${questions[i].title}</span>
                     </div>
                     <div class="option-container">
@@ -65,7 +66,7 @@ function renderQuestions(questions){
             questionsContainer.innerHTML +=
             `
                 <div class="question${i}">
-                    <div class="question-text">
+                    <div class="question-text" style="background-color:${questions[i].color};">
                         <span>${questions[i].title}</span>
                     </div>
                     <div class="option-container">
@@ -89,13 +90,13 @@ function renderQuestions(questions){
             questionsContainer.innerHTML +=
             `
                 <div class="question${i}">
-                    <div class="question-text">
+                    <div class="question-text" style="background-color:${questions[i].color};">
                         <span>${questions[i].title}</span>
                     </div>
                     <div class="option-container">
                         <div class="option" onclick="selectOption(this)">
-                            <img src="$${answers[0].image}" alt="">
-                            <span class="option-text">Mustela putorius (o Furão)</span>
+                            <img src="${answers[0].image}" alt="">
+                            <span class="option-text">${answers[0].text}</span>
                         </div>
                         <div class="option" onclick="selectOption(this)">
                             <img src="${answers[1].image}" alt="">
@@ -113,6 +114,7 @@ function renderQuestions(questions){
                 </div>
             `
         }
+        
     }
     const question = document.querySelector(".question0").style.display = "flex"
 }

@@ -3,17 +3,21 @@ body{
     font-family: 'Roboto', sans-serif;
     background-color: #FAFAFA;
 }
+span{
 
+    word-break: break-all;
+}
 header{
     width: 100%;
     height: 69px;
     background-color: red;
     top: 0;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 3;
 }
 h1{
     font-size: 37px;
@@ -29,7 +33,6 @@ h1{
     align-items: center;
     justify-content: space-between;
     background-color: #fafafa;
-    display: none;
 }
 .with-quiz-created{
     margin-bottom: 38px;
@@ -201,6 +204,7 @@ main{
     width: 100%;
     height: 142px;
     z-index: 1;
+    margin-top: 69px;
 }
 .quiz-layout .quiz-header span{
     position: absolute;
@@ -466,7 +470,7 @@ main{
 /* Initial Creation Section */
 
 .form1-layout{
-    /* display:none;  */
+    display:none; 
 }
 .contains{
     position: relative;
