@@ -16,12 +16,12 @@
         <div class="without-quiz-created">
             
             <span class="without-quizz-message">Você não criou nenhum quizz ainda :(</span>
-            <button class="create-quizz" onclick=""><span>Criar Quizz</span></button>
+            <button class="create-quizz" onclick="buttonEnterForm()"><span>Criar Quizz</span></button>
         </div>
         <div class="with-quiz-created">
             <div class="yourself-created-quizzes-title">
                 <h2>Seus Quizzes</h2>
-                <button><ion-icon name="add-circle"></ion-icon></button>
+                <button onclick="buttonEnterForm()"><ion-icon name="add-circle"></ion-icon></button>
             </div>
             <div class="yourself-created-quizzes">
                 <div class="quizz">
@@ -44,10 +44,10 @@
         </div>
         <div class="result-container">
             <div class="result-background">
-                <div class="result-level"></div>
+                <div class="result-level"><span></span></div>
                 <div class="result-infos">
-                    <div class="result-image"></div>
-                    <div class="result-message"></div>
+                    <img src="" class="result-image"></img>
+                    <div class="result-message"><span></span></div>
                 </div>
             </div>
         </div>
@@ -55,6 +55,7 @@
             <button class="restart-quiz" onclick="restartQuiz()"><span>Reiniciar Quizz</span></button>
             <button class="back-home" onclick="reloadPage()"><span>Voltar pra home</span></button>
         </div>
+        <footer></footer>
     </section>
     <section class="form1-layout">
            <h2 class="form-sections" >Comece pelo começo</h2>
@@ -146,7 +147,7 @@
             </div>
             <div class="final-options">
                 <button class="access-quizz-button">Acessar Quizz</button>
-                <p class="return-home">Voltar pra home</p>
+                <p class="return-home" onclick="reloadPage()">Voltar pra home</p>
             </div>
         </div>
     </section>

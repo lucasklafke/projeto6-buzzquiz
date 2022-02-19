@@ -190,7 +190,7 @@ main{
 }
 /* ^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~ */ /* layout respondendo quizes */ /* ^^^^^^^^^^^^^^^^~~~~~~~~~~~~~~~~~~~~ */
 .quiz-layout{
-    background-color: #EDEDED;
+    background-color: #FAFAFA;
     display: none;
 }
 .quiz-layout .quiz-header{
@@ -294,17 +294,35 @@ main{
     height: 99px;
     background-color: red;
     margin: 18px 0 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.quiz-layout .result-level{
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
 }
 .quiz-layout .result-image{
     width: 340px;
     height: 255px;
-    background-color: red;
     margin: 10px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .quiz-layout .result-message{
     width: 340px;
     height: 96px;
-    background-color: red;
+    position: relative;
+    display: flex;
+}
+.quiz-layout .result-message span{
+    font-size: 17px;
+    font-weight: 700;
+    color: #484848;
 }
 .quiz-layout .quiz-menu{
     display: flex;
@@ -327,7 +345,7 @@ main{
     width: 220px;
     height: 44px;
     margin-top: 8px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     border: none;
     background-color: #FAFAFA;
 }
@@ -350,7 +368,11 @@ main{
     background-color: white;
     width: 375px;
 }
-
+.quiz-layout footer{
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+}
 
 .wrong-answer span{
     color: red;
@@ -407,7 +429,11 @@ main{
         display: none;
     }
     .quiz-layout .result-level{
+        position: relative;
         width: 730px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .quiz-layout .result-infos{
         display: flex;
@@ -430,6 +456,7 @@ main{
     .quiz-layout .quiz-menu{
         display: none;
     }
+    
     
 }
 

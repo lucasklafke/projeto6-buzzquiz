@@ -3,24 +3,28 @@ let counterQuestion = 0
 let counterQuestionAux = 1
 let idQuizSelecionado = 0
 let countCorrectAnswers = 0
+let quizInfos = []
+let counterLevel = 0
 function enterQuizz(quizz){
     const initialLayout = document.querySelector(".initial-layout").style.display = "none"
     const quizLayout = document.querySelector(".quiz-layout").style.display = "block"
     getQuizz(quizz)
 }
 function getQuizz(quizz){
-    typeof(quizz.id)
+
     if(typeof(quizz.id) === 'string'){
         idQuizSelecionado = quizz.id
     }
     const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizSelecionado}`)
     promise.then(renderQuizzLayout)
     promise.catch("deuproblemao")
+    
 }
 function renderQuizzLayout(response){
+
     console.log('deubom')
     const infos = response.data
-    
+    quizInfos.push(infos)
     const quizTitle = document.querySelector(".quiz-header span")
     quizTitle.innerHTML = infos.title
     
@@ -29,7 +33,6 @@ function renderQuizzLayout(response){
 
     const questions = infos.questions
     renderQuestions(questions)
-    
 }   
 function errorRenderQuizzLayout(response){
     console.log('deuruim')
@@ -128,8 +131,6 @@ function selectOption(selected){
                 }
 
 
-                console.log(answers[i].isCorrectAnswer === true)
-                console.log(answers[i])
                 if(answers[i].isCorrectAnswer === false){
                     arrayOptions[i].classList.add("wrong-answer")
                 } else{
@@ -149,11 +150,9 @@ function selectOption(selected){
             resultContainer.style.display = "flex"
             const finishMenu = document.querySelector(".quiz-menu").style.display = "flex"
             resultContainer.scrollIntoView()
+            createResult()
         } else{
-            const question = document.querySelector(`.question${counterQuestionAux}`)
-            question.style.display = "flex"
-            question.scrollIntoView()
-            counterQuestionAux +=1
+            setTimeout(scrollNextQuestion,2000)
         }
     }
 }
@@ -164,11 +163,42 @@ function restartQuiz(){
     questionList = []
     counterQuestion = 0
     counterQuestionAux = 1
+    counterLevel = 0
     document.querySelector(".questions-container").innerHTML = ''
     getQuizz(idQuizSelecionado)
     const resultContainer = document.querySelector(".result-container")
     resultContainer.style.display = "none"
-    const finishMenu = document.queryselector(".quiz-menu").style.display = "none"
-    const question = document.queryselector(".question0")
+    const finishMenu = document.querySelector(".quiz-menu").style.display = "none"
+    finishMenu.style.display = "none"
+    const question = document.querySelector(".question0")
     question.scrollIntoView()
+     
+
+}
+function scrollNextQuestion(){
+    const question = document.querySelector(`.question${counterQuestionAux}`)
+    question.style.display = "flex"
+    question.scrollIntoView()
+    counterQuestionAux +=1
+}
+function createResult(){
+    const levels = quizInfos[0].levels
+    calcLevel(levels)
+    const levelTitle = document.querySelector(".result-level span")
+    const levelImage = document.querySelector(".result-image")
+    const levelText = document.querySelector(".result-message span")
+    levelTitle.innerHTML = levels[parseInt(counterLevel)].title
+    levelImage.setAttribute("src",`${levels[parseInt(counterLevel)].image}`)
+    levelText.innerHTML = levels[parseInt(counterLevel)].text
+}
+function calcLevel(levels){
+
+    const porcentage = (countCorrectAnswers / questionList.length) * 100
+    const qntLevels = levels.length
+    for(i = 1; i < levels.length;i++){
+        if(porcentage >= levels[i].minValue){
+            counterLevel++
+        }
+    }
+
 }
