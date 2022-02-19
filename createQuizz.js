@@ -1,3 +1,8 @@
+function buttonEnterForm(){
+    const homeLayout = document.querySelector('.initial-layout').style.display = 'none';
+    const firstFormLayout = document.querySelector('.form1-layout').style.display='block';
+}
+
 function buttonInfosQuizz(next){
     const infosLayout = document.querySelector('.form1-layout').style.display = 'none';
     const questionsLayout = document.querySelector('.form2-layout').style.display='block';
