@@ -29,6 +29,7 @@ h1{
     align-items: center;
     justify-content: space-between;
     background-color: #fafafa;
+    display: none;
 }
 .with-quiz-created{
     margin-bottom: 38px;
@@ -438,7 +439,7 @@ main{
 /* Initial Creation Section */
 
 .form1-layout{
-    display:none; 
+    /* display:none;  */
 }
 .contains{
     position: relative;
