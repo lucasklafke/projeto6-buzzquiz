@@ -83,7 +83,6 @@ function buttonQuestionsQuizz(next){
     
                     }
                 }
-
             }
 
     } else if((textQuestion.value == "") || (textQuestion.value.length < 20)){
@@ -99,42 +98,42 @@ function buttonQuestionsQuizz(next){
 
     } else if((infosForm2[2].value = "") || (infosForm2[3].value = "")){
         alert("Por favor, preencha os campos 'Resposta correta' e 'URL da imagem'.")
-    }
+    }  
 
-    for(let i = 4; i < 9; i++){
-        let counterWrongQuestions = 0;
+    const wrongQuestion = document.querySelectorAll('.form2-layout .wrong-quetions input');
+    let counterWrongQuestions = 0;
+    
+    for(let i = 0; i < 5; i++){
 
+        let arrayWrongQuestions = wrongQuestion[i];
+        let arrayURL = wrongQuestion[i+1];
+    
         if(i % 2 == 0){
-            if((infosForm2[i].value = "") || (infosForm2[i+1].value = "")){
+            if((wrongQuestion.value = "") || (wrongQuestion.value = "")){
                 counterWrongQuestions ++;
                 console.log(`quantidade wrong questions ${counter}`);
-
+    
             }
         }
         if(counterWrongQuestions > 2){
             alert('Por favor, adicione pelo menos 1 reposta incorreta e url correspondentes.');
-
+    
         } else if(counterWrongQuestions <= 2){
             // counter++;
             verifyWrong_Answer = true;
             console.log(`quantidade ultimo count ${counter}`);
-
+    
         }
     }
-    
     if((verifyText_Color) && (verifyCorrect_Answer) && (verifyWrong_Answer)) {
         const questionsLayout = document.querySelector('.form2-layout').style.display = 'none';
         const levelsLayout = document.querySelector('.form3-layout').style.display = 'block';
-
+    
     }
 
-    // if(counter == 3) {
-    //     const questionsLayout = document.querySelector('.form2-layout').style.display = 'none';
-    //     const levelsLayout = document.querySelector('.form3-layout').style.display = 'block';
-
-    // }
-
 }
+
+
 
 const infosForm2 = document.querySelectorAll('.form2-layout input');
 
