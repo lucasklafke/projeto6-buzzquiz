@@ -7,7 +7,7 @@ function buttonInfosQuizz(next){
     
     let counterForm1 = 0;
     let counterTitle = false;
-    let counterNumerQuestions = false;
+    let counterNumberQuestions = false;
     let counterLevels = false;
     const infosForm1 = document.querySelectorAll('.form1-layout input');
 
@@ -32,7 +32,7 @@ function buttonInfosQuizz(next){
     if(questionsNumber.value < 3){
         alert('Aquantidade mínima de perguntas são 3, por favor digite um número válido.')
     } else if(questionsNumber.value >= 3){
-        counterNumerQuestions = true;
+        counterNumberQuestions = true;
     }
 
     const levelsNumber = infosForm1[3];
@@ -44,7 +44,7 @@ function buttonInfosQuizz(next){
     }
 
     
-    if((counterForm1 == 4) && (counterTitle) && (counterNumerQuestions) && (counterLevels)) {
+    if((counterForm1 == 4) && (counterTitle) && (counterNumberQuestions) && (counterLevels)) {
         const infosLayout = document.querySelector('.form1-layout').style.display = 'none';
         const questionsLayout = document.querySelector('.form2-layout').style.display='block';
         
@@ -56,101 +56,117 @@ function buttonInfosQuizz(next){
 function buttonQuestionsQuizz(next){
 
     const infosForm2 = document.querySelectorAll('.form2-layout input');
-    let counter = 0;
-    let verifyText_Color = false;
-    let verifyCorrect_Answer = false;
-    let verifyWrong_Answer = false;
+    // let verifyText_Color = false;
+    let verifyText = false;
+    let verifyColor = false;
+    let verifyCorrectAnswer = false;
+    let verifyWrongAnswer = false;
 
-    const textQuestion = infosForm2[0];
+    const textQuestion = infosForm2[0].value;
     const colorQuestion = infosForm2[1];
 
     const hexadecimalArray = ['1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
-    const colorQuestionArray = [colorQuestion.value];
+    const colorQuestionArray = colorQuestion.value;
 
-    if(((textQuestion.value != "") && (textQuestion.value >= 20) ) && (colorQuestion.value != "")){
+    if((textQuestion !== "") && (textQuestion.length >= 20)){
+        verifyText = true;
+        console.log('verificação do titulo OK');
+    } else if((textQuestion == "") || (textQuestion.length < 20)){
+        alert('O titulo do quizz deve ter entre 20 e 65 caracteres.')
+    }
+    
+    if(colorQuestionArray !== ""){
+        let counterColor = 0;
 
+        if((colorQuestionArray[0] == '#') && (colorQuestionArray.length == 7)){
             for(let i = 0; i < hexadecimalArray.length; i++){
-
+    
                 for(let j = 1; j < colorQuestionArray.length; j++){
-
-                    if(!colorQuestionArray[j].includes(hexadecimalArray[i])){
-                        alert('A cor deve estar no formato hexadecimal. Por favor, digite novamente.')
-    
-                    } else if(colorQuestionArray[j].includes(hexadecimalArray[i])){
-                        verifyText_Color = true;
-                        // counter ++;
-                        console.log(`quantidade primeiro count ${counter}`);
-    
+                    if(colorQuestionArray[j].toLowerCase() === hexadecimalArray[i].toLowerCase()){
+                        counterColor++;
+                        console.log(counterColor);
                     }
                 }
-
             }
+        } else {
+            console.log('A cor do quizz deve estar no formato hexadecimal');
+        }
 
-    } else if((textQuestion.value == "") || (textQuestion.value.length < 20)){
-        alert('Por favor, digite uma pergunta com 20 caracteres ou mais.');
-        
+        if(counterColor == 6){
+            verifyColor = true;
+        }
     }
 
-    if((infosForm2[2].value != "") && (infosForm2[3].value != "")){
-        verifyCorrect_Answer = true;
-        // counter ++;
-        console.log(`quantidade segundo count ${counter}`);
 
+    if((infosForm2[2].value !== "") && (infosForm2[3].value !== "")){
 
-    } else if((infosForm2[2].value = "") || (infosForm2[3].value = "")){
+        const verifyURL = infosForm2[3].value;
+        const validationURL = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
+        if(validationURL.test(verifyURL)){
+            console.log('Teste URL OK');
+            verifyCorrectAnswer = true;
+        } else {
+            console.log('URL inválida');
+        }
+
+    } else if((infosForm2[2].value == "") || (infosForm2[3].value == "")){
         alert("Por favor, preencha os campos 'Resposta correta' e 'URL da imagem'.")
-    }
+    }  
 
-    for(let i = 4; i < 9; i++){
-        let counterWrongQuestions = 0;
+    let counterWrongAnswers = 0;
+    let counterURL = 0;
+    const arrayWrongAnswers = document.querySelectorAll('.wrong-questions > input');
+    
+    for(let i = 0; i <= 5; i = i + 2){
+        
+        let wrongAnswer = arrayWrongAnswers[i];
+        let imageURL = arrayWrongAnswers[i+1];
+        
+        if((wrongAnswer.value !== "") || (imageURL.value !== "")){
 
-        if(i % 2 == 0){
-            if((infosForm2[i].value = "") || (infosForm2[i+1].value = "")){
-                counterWrongQuestions ++;
-                console.log(`quantidade wrong questions ${counter}`);
+            if(wrongAnswer.value == ""){
+                alert('Uma das URLs de imagem adicionadas está sem sua respectiva resposta incorreta.')
 
+            } else {
+                counterWrongAnswers ++;
+            } 
+
+            if(imageURL.value == ""){
+                alert('Uma das respostas incorretas adicionadas está sem sua respectiva URL de imagem.')
+
+            } else {
+                const verifyURL = imageURL.value;
+                const validationURL = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
+                if(validationURL.test(verifyURL)){
+                    console.log('Teste URL da questão incorreta OK');
+                    verifyCorrectAnswer = true;
+                    counterURL++;
+
+                } else {
+                    console.log('URL inválida');
+                }
             }
         }
-        if(counterWrongQuestions > 2){
-            alert('Por favor, adicione pelo menos 1 reposta incorreta e url correspondentes.');
 
-        } else if(counterWrongQuestions <= 2){
-            // counter++;
-            verifyWrong_Answer = true;
-            console.log(`quantidade ultimo count ${counter}`);
+        if((counterWrongAnswers == 0) || (counterURL == 0)){
+            alert('Por favor, adicione pelo menos 1 reposta incorreta e url correspondentes.');
+    
+        } else if(counterWrongAnswers == counterURL) {
+            verifyWrongAnswer = true;
+            console.log('Resposta errada OK');
+            console.log((counterWrongAnswers == counterURL));
 
         }
     }
-    
-    if((verifyText_Color) && (verifyCorrect_Answer) && (verifyWrong_Answer)) {
+
+    if((verifyText) && (verifyColor) && (verifyCorrectAnswer) && (verifyWrongAnswer)) {
         const questionsLayout = document.querySelector('.form2-layout').style.display = 'none';
         const levelsLayout = document.querySelector('.form3-layout').style.display = 'block';
-
+    
     }
 
-    // if(counter == 3) {
-    //     const questionsLayout = document.querySelector('.form2-layout').style.display = 'none';
-    //     const levelsLayout = document.querySelector('.form3-layout').style.display = 'block';
-
-    // }
-
-}
-
-const infosForm2 = document.querySelectorAll('.form2-layout input');
-
-for( let i = 0; i < infosForm2.length; i++){
-    console.log(infosForm2[i].value);
-}
-
-function buttonLevelsQuizz(next){
-    const levelsLayout = document.querySelector('.form3-layout').style.display = 'none';
-    const finalLayout = document.querySelector('.form4-layout').style.display = 'block';
-}
-
-const infosForm3 = document.querySelectorAll('.form3-layout input');
-
-for( let i = 0; i < infosForm3.length; i++){
-    console.log(infosForm3[i].value);
 }
 
 function createQuestion2(question){
@@ -186,6 +202,69 @@ function createQuestion2(question){
              <footer class="fake-footer"></footer>
     `
 }
+
+function buttonLevelsQuizz(next){
+
+    const infosForm3 = document.querySelectorAll('.form3-layout input');
+    const titleLevel = infosForm3[0].value;
+    const correctAnswersPercent = parseInt(infosForm3[1].value);
+    const imageURL = infosForm3[2].value;
+    const descriptionLevel = infosForm3[3].value;
+    let verifyTitle = false;
+    let verifyLevel = false;
+    let verifyURL = false;
+    let verifyDescription = false;
+
+    if((titleLevel != "") && (titleLevel.length >= 10)){
+        verifyTitle = true;
+        console.log('Verificação do titulo OK');
+
+    } else{
+        alert('O titulo do nivel deve ter pelo menos 10 caracteres.')
+
+    }
+    
+    if(correctAnswersPercent != ""){
+
+        if(((titleLevel.length >= 0) && (titleLevel.length <=100))){
+            verifyLevel = true;
+            console.log('Verificação da porcentagem OK');
+        }
+    } else {
+        alert('A porcentagem deve ser um número entre 0 e 100. Por favor, digite novamente.')
+
+    }
+
+    if(imageURL != ""){
+
+        const validationURL = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
+        if(validationURL.test(imageURL)){
+            console.log('Teste URL da questão incorreta OK');
+            verifyURL = true;
+
+        } else {
+            alert('A URL digitada é inválida.');
+        }
+    }
+
+    if((descriptionLevel != "") && (descriptionLevel.length >= 30)){
+        verifyDescription = true;
+        console.log('Verificação da descrição OK');
+
+    } else{
+        alert('A descrição do nivel deve ter pelo menos 30 caracteres. Por favor, reescreva a descrição.')
+
+    }
+
+    if((verifyTitle) && (verifyLevel) && (verifyURL) && (verifyDescription)){
+
+        const levelsLayout = document.querySelector('.form3-layout').style.display = 'none';
+        const finalLayout = document.querySelector('.form4-layout').style.display = 'block';
+
+    }
+}
+
 
 function createLevel2(level){
     const newLevel = document.querySelector('.levels');
