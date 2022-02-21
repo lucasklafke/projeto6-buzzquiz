@@ -1,15 +1,17 @@
+
+
 function buttonEnterForm(){
     const homeLayout = document.querySelector('.initial-layout').style.display = 'none';
     const firstFormLayout = document.querySelector('.form1-layout').style.display='block';
 }
 
+const infosForm1 = document.querySelectorAll('.form1-layout input');
 function buttonInfosQuizz(next){
     
     let counterForm1 = 0;
     let counterTitle = false;
     let counterNumberQuestions = false;
     let counterLevels = false;
-    const infosForm1 = document.querySelectorAll('.form1-layout input');
 
     for(let i = 0; i < infosForm1.length; i++){
         let element = infosForm1[i].value;
@@ -53,10 +55,9 @@ function buttonInfosQuizz(next){
 }
 
 
+const infosForm2 = document.querySelectorAll('.form2-layout input');
 function buttonQuestionsQuizz(next){
 
-    const infosForm2 = document.querySelectorAll('.form2-layout input');
-    // let verifyText_Color = false;
     let verifyText = false;
     let verifyColor = false;
     let verifyCorrectAnswer = false;
@@ -168,12 +169,27 @@ function buttonQuestionsQuizz(next){
     }
 
 }
+/* ---- implemetar objetos para partes fincionais ---- */
 
+const numberQuestions =  infosForm1[2].value;
+const newQuestionAdd = document.querySelector('.questions > AddNewQuestion');
+
+for(let i = 1; i < numberQuestions; i++){
+    newQuestionAdd.innerHTML += `
+    
+        <div class="write-question question">
+            <h2 class="create-quizz-sections">Pergunta ${i}</h2>
+            <ion-icon class="create-quizz-icons" name="create-outline" onclick="createQuestion2(this)"></ion-icon>
+        </div>
+    
+    `
+}
+
+const newQuestion = document.querySelector('.questions');
 function createQuestion2(question){
-    const newQuestion = document.querySelector('.questions');
     newQuestion.innerHTML = `
 
-    <div class="questions-box create-section">
+    <div class="questions-box create-section subsection">
 
                 <h2 class="create-quizz-sections">Pergunta 2</h2>
                  <input class="questions-field" type="text" name="" placeholder=" Texto da sua pergunta">
@@ -203,9 +219,11 @@ function createQuestion2(question){
     `
 }
 
+
+
+const infosForm3 = document.querySelectorAll('.form3-layout input');
 function buttonLevelsQuizz(next){
 
-    const infosForm3 = document.querySelectorAll('.form3-layout input');
     const titleLevel = infosForm3[0].value;
     const correctAnswersPercent = parseInt(infosForm3[1].value);
     const imageURL = infosForm3[2].value;
@@ -266,24 +284,38 @@ function buttonLevelsQuizz(next){
 }
 
 
+const newLevel = document.querySelector('.levels');
 function createLevel2(level){
-    const newLevel = document.querySelector('.levels');
     newLevel.innerHTML = `
 
     <div class="questions-box levels-section">
 
-                <h2 class="create-quizz-sections">Nivel 2</h2>
-                 <input class="questions-field" type="text" name="" placeholder=" Titulo do nível">
-                 <input class="questions-field" type="text" name="" placeholder=" % de acerto mínimo">
-                 <input class="questions-field" type="url" name="" placeholder=" URL da imagem do nível">
-                 <input class="questions-field description" type="text" name="" placeholder=" Descrição do nível">
-            </div>
+        <h2 class="create-quizz-sections">Nivel 1</h2>
+        <input class="questions-field" type="text" name="" placeholder=" Titulo do nível">
+        <input class="questions-field" type="text" name="" placeholder=" % de acerto mínimo">
+        <input class="questions-field" type="url" name="" placeholder=" URL da imagem do nível">
+        <input class="questions-field description" type="text" name="" placeholder=" Descrição do nível">
+    </div>
 
-            <div class="write-question nivel-2">
-                <h2 class="create-quizz-sections">Nivel 3</h2>
-                <ion-icon class="create-quizz-icons" name="create-outline"></ion-icon>
-             </div>
-             <button class="form-button button-3" onclick="buttonLevelsQuizz(this)">Finalizar Quizz</button>
-             <footer class="fake-footer"></footer>
+    <div class="write-question nivel-2">
+        <h2 class="create-quizz-sections">Nivel 2</h2>
+        <ion-icon class="create-quizz-icons" name="create-outline" onclick="createLevel2(this)"></ion-icon>
+    </div>
+    <div class="write-question nivel-3">
+        <h2 class="create-quizz-sections">Nivel 3</h2>
+        <ion-icon class="create-quizz-icons" name="create-outline" onclick="createLevel2(this)"></ion-icon>
+    </div>
+    <button class="form-button button-3" onclick="buttonLevelsQuizz(this)">Finalizar Quizz</button>
+    <footer class="fake-footer"></footer>
+    
     `
 }
+
+const quizzInitialData = {
+	title: `${infosForm1[0].value}`,
+	image: `${infosForm1[1].value}`,
+};
+
+const questions = [];
+
+// for(let i = )
