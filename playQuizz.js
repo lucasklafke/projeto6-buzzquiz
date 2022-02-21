@@ -44,16 +44,16 @@ function renderQuestions(questions){
         if(answers.length == 2){
             questionsContainer.innerHTML +=
             `
-                <div class="question${i}">
+                <div class="question${i}" data-identifier="question">
                     <div class="question-text" style="background-color:${questions[i].color};">
                         <span>${questions[i].title}</span>
                     </div>
                     <div class="option-container">
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[0].image}" alt="">
                             <span class="option-text">${answers[0].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[1].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
@@ -63,20 +63,20 @@ function renderQuestions(questions){
         } else if(answers.length == 3){
             questionsContainer.innerHTML +=
             `
-                <div class="question${i}">
+                <div class="question${i}" data-identifier="question">
                     <div class="question-text" style="background-color:${questions[i].color};">
                         <span>${questions[i].title}</span>
                     </div>
                     <div class="option-container">
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[0].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[1].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[2].image}" alt="">
                             <span class="option-text">M${answers[1].text}</span>
                         </div>
@@ -87,24 +87,24 @@ function renderQuestions(questions){
         } else{
             questionsContainer.innerHTML +=
             `
-                <div class="question${i}">
+                <div class="question${i}" data-identifier="question">
                     <div class="question-text" style="background-color:${questions[i].color};">
                         <span>${questions[i].title}</span>
                     </div>
                     <div class="option-container">
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[0].image}" alt="">
                             <span class="option-text">${answers[0].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[1].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[2].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[3].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
