@@ -56,7 +56,6 @@ function buttonInfosQuizz(next){
 function buttonQuestionsQuizz(next){
 
     const infosForm2 = document.querySelectorAll('.form2-layout input');
-    let counter = 0;
     let verifyText_Color = false;
     let verifyCorrect_Answer = false;
     let verifyWrong_Answer = false;
@@ -67,7 +66,7 @@ function buttonQuestionsQuizz(next){
     const hexadecimalArray = ['1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
     const colorQuestionArray = [colorQuestion.value];
 
-    if(((textQuestion.value != "") && (textQuestion.value >= 20) ) && (colorQuestion.value != "")){
+    if(((textQuestion.value !== "") && (textQuestion.value >= 20) ) && (colorQuestion.value !== "")){
 
             for(let i = 0; i < hexadecimalArray.length; i++){
 
@@ -78,9 +77,6 @@ function buttonQuestionsQuizz(next){
     
                     } else if(colorQuestionArray[j].includes(hexadecimalArray[i])){
                         verifyText_Color = true;
-                        // counter ++;
-                        console.log(`quantidade primeiro count ${counter}`);
-    
                     }
                 }
             }
@@ -90,41 +86,42 @@ function buttonQuestionsQuizz(next){
         
     }
 
-    if((infosForm2[2].value != "") && (infosForm2[3].value != "")){
+    if((infosForm2[2].value !== "") && (infosForm2[3].value !== "")){
+
         verifyCorrect_Answer = true;
-        // counter ++;
-        console.log(`quantidade segundo count ${counter}`);
 
-
-    } else if((infosForm2[2].value = "") || (infosForm2[3].value = "")){
+    } else if((infosForm2[2].value == "") || (infosForm2[3].value == "")){
         alert("Por favor, preencha os campos 'Resposta correta' e 'URL da imagem'.")
     }  
 
-    const wrongQuestion = document.querySelectorAll('.form2-layout .wrong-quetions input');
-    let counterWrongQuestions = 0;
+    let counterWrongAnswers = 0;
+    const arrayWrongAnswers = document.querySelectorAll('.wrong-questions > input');
     
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i <= 5; i = i + 2){
+        
+        let wrongAnswer = arrayWrongAnswers[i];
+        let imageURL = arrayWrongAnswers[i+1];
+        
+        if((wrongAnswer.value !== "") || (imageURL.value !== "")){
 
-        let arrayWrongQuestions = wrongQuestion[i];
-        let arrayURL = wrongQuestion[i+1];
-    
-        if(i % 2 == 0){
-            if((wrongQuestion.value = "") || (wrongQuestion.value = "")){
-                counterWrongQuestions ++;
-                console.log(`quantidade wrong questions ${counter}`);
-    
+            counterWrongAnswers ++;
+
+            if(wrongAnswer.value == ""){
+                alert('Uma das URLs de imagem adicionadas está sem sua respectiva resposta incorreta.')
+            } 
+            if(imageURL.value == ""){
+                alert('Uma das respostas incorretas adicionadas está sem sua respectiva URL de imagem.')
             }
         }
-        if(counterWrongQuestions > 2){
+
+        if(counterWrongAnswers == 0){
             alert('Por favor, adicione pelo menos 1 reposta incorreta e url correspondentes.');
     
-        } else if(counterWrongQuestions <= 2){
-            // counter++;
+        } else {
             verifyWrong_Answer = true;
-            console.log(`quantidade ultimo count ${counter}`);
-    
         }
     }
+
     if((verifyText_Color) && (verifyCorrect_Answer) && (verifyWrong_Answer)) {
         const questionsLayout = document.querySelector('.form2-layout').style.display = 'none';
         const levelsLayout = document.querySelector('.form3-layout').style.display = 'block';
