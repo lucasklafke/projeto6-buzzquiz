@@ -27,7 +27,7 @@ h1{
 }
 
 .initial-layout{
-    margin-top: 31px;
+    margin-top: 69px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +35,8 @@ h1{
     background-color: #fafafa;
 }
 .with-quiz-created{
-    margin-bottom: 38px;
+    display: none;
+    margin: 38px 0;
 }
 
 .yourself-created-quizzes-title{
@@ -66,9 +67,9 @@ ion-icon{
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    margin-top: 31px;
     margin-bottom: 35px;
-    display: none;
+    /*display: none; */
 }
 .initial-layout .without-quizz-message{
     display: flex;
@@ -185,6 +186,7 @@ main{
     color: #B9B9B9;
     font-weight: 400;
     text-align: center;
+    margin-top: 77px;
 }
 .initial-layout .without-quizz-message{
     display: block;
@@ -470,7 +472,7 @@ main{
 /* Initial Creation Section */
 
 .form1-layout{
-    display:none; 
+    display:none;
 }
 .contains{
     position: relative;
@@ -548,7 +550,7 @@ main{
 .form-sections{
     text-align: center;
     align-items: center;
-    margin-top: 37px;
+    margin-top: 106px;
 }
 
 .form-button{

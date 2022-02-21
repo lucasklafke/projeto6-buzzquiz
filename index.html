@@ -15,23 +15,21 @@
     <section class="initial-layout">
         <div class="without-quiz-created">
             
-            <span class="without-quizz-message">Você não criou nenhum quizz ainda :(</span>
-            <button class="create-quizz" onclick="buttonEnterForm()"><span>Criar Quizz</span></button>
+            <nav class="without-quizz-message">Você não criou nenhum quizz ainda :(</nav>
+            <button class="create-quizz" onclick="buttonEnterForm()" data-identifier="create-quizz"><span>Criar Quizz</span></button>
         </div>
         <div class="with-quiz-created">
             <div class="yourself-created-quizzes-title">
                 <h2>Seus Quizzes</h2>
-                <button onclick="buttonEnterForm()"><ion-icon name="add-circle"></ion-icon></button>
+                <button onclick="buttonEnterForm()" data-identifier="create-quizz"><ion-icon name="add-circle"></ion-icon></button>
             </div>
-            <div class="yourself-created-quizzes">
-                <div class="quizz">
-                    <h3>Acerte os personagens corretos dos Simpsons e prove seu amor!</h3>
-                </div>
+            <div class="yourself-created-quizzes" data-identifier="user-quizzes">
+                
             </div>
         </div>
         <main>
             <h2>Todos os Quizzes</h2>
-            <section class="quizz-container">
+            <section class="quizz-container" data-identifier="general-quizzes">
             </section>
         </main>
     </section>
@@ -44,7 +42,7 @@
         </div>
         <div class="result-container">
             <div class="result-background">
-                <div class="result-level"><span></span></div>
+                <div class="result-level" data-identifier="quizz-result"><span></span></div>
                 <div class="result-infos">
                     <img src="" class="result-image"></img>
                     <div class="result-message"><span></span></div>

@@ -17,12 +17,11 @@ function getQuizz(quizz){
     }
     const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idQuizSelecionado}`)
     promise.then(renderQuizzLayout)
-    promise.catch("deuproblemao")
+    promise.catch(errorRenderQuizzLayout)
     
 }
 function renderQuizzLayout(response){
 
-    console.log('deubom')
     const infos = response.data
     quizInfos.push(infos)
     const quizTitle = document.querySelector(".quiz-header span")
@@ -35,10 +34,9 @@ function renderQuizzLayout(response){
     renderQuestions(questions)
 }   
 function errorRenderQuizzLayout(response){
-    console.log('deuruim')
+    window.alert("houve um problema ao inicializar o quiz! Recarregue a página e tente novamente")
 }
 function renderQuestions(questions){
-    console.log(questions)
     let questionsContainer = document.querySelector(".questions-container")
     for(i = 0; i <questions.length;i++){
         questionList.push(questions[i])
@@ -46,16 +44,16 @@ function renderQuestions(questions){
         if(answers.length == 2){
             questionsContainer.innerHTML +=
             `
-                <div class="question${i}">
+                <div class="question${i}" data-identifier="question">
                     <div class="question-text" style="background-color:${questions[i].color};">
                         <span>${questions[i].title}</span>
                     </div>
                     <div class="option-container">
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[0].image}" alt="">
                             <span class="option-text">${answers[0].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[1].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
@@ -65,20 +63,20 @@ function renderQuestions(questions){
         } else if(answers.length == 3){
             questionsContainer.innerHTML +=
             `
-                <div class="question${i}">
+                <div class="question${i}" data-identifier="question">
                     <div class="question-text" style="background-color:${questions[i].color};">
                         <span>${questions[i].title}</span>
                     </div>
                     <div class="option-container">
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[0].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[1].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[2].image}" alt="">
                             <span class="option-text">M${answers[1].text}</span>
                         </div>
@@ -89,24 +87,24 @@ function renderQuestions(questions){
         } else{
             questionsContainer.innerHTML +=
             `
-                <div class="question${i}">
+                <div class="question${i}" data-identifier="question">
                     <div class="question-text" style="background-color:${questions[i].color};">
                         <span>${questions[i].title}</span>
                     </div>
                     <div class="option-container">
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[0].image}" alt="">
                             <span class="option-text">${answers[0].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[1].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[2].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
-                        <div class="option" onclick="selectOption(this)">
+                        <div class="option" onclick="selectOption(this)" data-identifier="answer">
                             <img src="${answers[3].image}" alt="">
                             <span class="option-text">${answers[1].text}</span>
                         </div>
@@ -166,6 +164,7 @@ function restartQuiz(){
     counterQuestion = 0
     counterQuestionAux = 1
     counterLevel = 0
+    countCorrectAnswers = 0
     document.querySelector(".questions-container").innerHTML = ''
     getQuizz(idQuizSelecionado)
     const resultContainer = document.querySelector(".result-container")
@@ -185,22 +184,27 @@ function scrollNextQuestion(){
 }
 function createResult(){
     const levels = quizInfos[0].levels
-    calcLevel(levels)
+    let porcentage = 0
+    porcentage = calcLevel(levels,porcentage)
     const levelTitle = document.querySelector(".result-level span")
     const levelImage = document.querySelector(".result-image")
     const levelText = document.querySelector(".result-message span")
-    levelTitle.innerHTML = levels[parseInt(counterLevel)].title
+    levelTitle.innerHTML = `${porcentage}% de acerto: `
+    levelTitle.innerHTML += levels[parseInt(counterLevel)].title
     levelImage.setAttribute("src",`${levels[parseInt(counterLevel)].image}`)
     levelText.innerHTML = levels[parseInt(counterLevel)].text
 }
-function calcLevel(levels){
-
-    const porcentage = (countCorrectAnswers / questionList.length) * 100
+function calcLevel(levels,porcentage){
+    console.log(porcentage)
+    porcentage = 0
+    console.log(porcentage)
+    porcentage = (countCorrectAnswers / questionList.length) * 100
     const qntLevels = levels.length
     for(i = 1; i < levels.length;i++){
         if(porcentage >= levels[i].minValue){
             counterLevel++
         }
     }
-
+    console.log(porcentage)
+    return porcentage
 }

@@ -281,6 +281,7 @@ function buttonLevelsQuizz(next){
         const finalLayout = document.querySelector('.form4-layout').style.display = 'block';
 
     }
+
 }
 
 
@@ -311,6 +312,7 @@ function createLevel2(level){
     `
 }
 
+<<<<<<< HEAD
 const quizzInitialData = {
 	title: `${infosForm1[0].value}`,
 	image: `${infosForm1[1].value}`,
@@ -319,3 +321,17 @@ const quizzInitialData = {
 const questions = [];
 
 // for(let i = )
+=======
+function postQuiz(){
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`,object)
+    promise.then(caseSuccess)
+    promise.catch(caseError)
+}
+function caseSuccess(response){
+    const objectChanged = JSON.stringify(object)
+    localStorage.setItem('quiz  ',objectChanged)
+}
+function caseError(){
+    window.alert("não foi possível criar o quizz, tente novamente")
+}
+>>>>>>> 4f0c0df208d20673e55e803e419a0db4b057afc9
