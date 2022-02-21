@@ -263,6 +263,7 @@ function buttonLevelsQuizz(next){
         const finalLayout = document.querySelector('.form4-layout').style.display = 'block';
 
     }
+
 }
 
 
@@ -286,4 +287,17 @@ function createLevel2(level){
              <button class="form-button button-3" onclick="buttonLevelsQuizz(this)">Finalizar Quizz</button>
              <footer class="fake-footer"></footer>
     `
+}
+
+function postQuiz(){
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes`,object)
+    promise.then(caseSuccess)
+    promise.catch(caseError)
+}
+function caseSuccess(response){
+    const objectChanged = JSON.stringify(object)
+    localStorage.setItem('quiz  ',objectChanged)
+}
+function caseError(){
+    window.alert("não foi possível criar o quizz, tente novamente")
 }

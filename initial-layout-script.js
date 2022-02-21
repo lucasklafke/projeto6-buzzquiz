@@ -1,6 +1,7 @@
 function getQuizzes(){
     const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes")
     promise.then(renderQuiz)
+    promise.catch(solveProblem)
 }
 
 function renderQuiz(response){
@@ -16,5 +17,9 @@ function renderQuiz(response){
     }
     //console.log(infos)
     //console.log(infos.response)
+}
+
+function solveProblem(response){
+    window.alert("Deu erro! Por favor recarregue a pagina")
 }
 getQuizzes()
